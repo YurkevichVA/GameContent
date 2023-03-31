@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Temp\temp_avatar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
@@ -17,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Player\" />
+    <Resource Include="Temp\temp_avatar.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

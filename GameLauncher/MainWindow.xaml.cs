@@ -1,4 +1,5 @@
 ﻿using GameLauncher.Admin;
+using GameLauncher.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,9 @@ namespace GameLauncher
 
         private void PlayerWindow_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            Hide();
+            new PlayerWindow().ShowDialog();
+            Show();
         }
 
         private void AdminWindow_Btn_Click(object sender, RoutedEventArgs e)

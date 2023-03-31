@@ -1,0 +1,66 @@
+﻿<Page x:Class="GameLauncher.Player.Pages.SignUpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GameLauncher.Player.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="Sign Up" FontSize="15">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button 
+            x:Name="ToLogin_Btn" Content="Log in" 
+            Click="ToLogin_Btn_Click"
+            Height="30" Width="80"
+            HorizontalAlignment="Right"
+            Margin="5"/>
+        <StackPanel
+            Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top"
+            Grid.Row="1">
+            <Label 
+                Content="Login:"
+                HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="Login_TxtBx" 
+                Height="30" Width="150" Margin="5"/>
+            <Label 
+                Content="Name:"
+                HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="Name_TxtBx"
+                Height="30" Width="150" Margin="5"/>
+            <Label 
+                Content="Surname"
+                HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="Surname_TxtBx"
+                Height="30" Width="150" Margin="5"/>
+            <Label 
+                Content="E-mail"
+                HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="Email_TxtBx"
+                Height="30" Width="150" Margin="5"/>
+            <Label 
+                Content="Password"
+                HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="Password_TxtBx"
+                Height="30" Width="150" Margin="5"/>
+            <Label 
+                Content="Repeat password"
+                HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="PassRepeat_TxtBx"
+                Height="30" Width="150" Margin="5"/>
+            <Button 
+                x:Name="Done_Btn" Click="Done_Btn_Click"
+                Content="Done" Margin="5"
+                Height="30" Width="100"/>
+        </StackPanel>
+    </Grid>
+</Page>

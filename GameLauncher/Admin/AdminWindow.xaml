@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameLauncher.Admin"
         mc:Ignorable="d"
-        Title="Admin" Height="550" Width="800">
+        Title="Admin" Height="550" Width="800"
+        ResizeMode="NoResize">
     <TabControl FontSize="15">
         <TabItem Header="Players">
             <Grid>

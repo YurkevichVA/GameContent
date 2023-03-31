@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameLauncher"
         mc:Ignorable="d"
-        Title="Start" Height="250" Width="400" FontSize="15"> 
+        Title="Start" Height="250" Width="400" FontSize="15"
+        ResizeMode="NoResize"> 
     <Grid>
         <StackPanel 
             Orientation="Vertical" 

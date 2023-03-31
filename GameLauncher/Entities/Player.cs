@@ -12,6 +12,7 @@ namespace GameLauncher.Entities
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string AvatarLink { get; set; }
         public string Login { get; set; }
         public string HashPassword { get; set; }
         public string Email { get; set; }
