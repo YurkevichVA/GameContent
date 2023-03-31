@@ -15,5 +15,6 @@ namespace GameLauncher.Entities
         public string InstallationLink { get; set; }
         public string InstallationFolder { get; set; }
         public string Type { get; set; }
+        public DateTime DeleteDt { get; set; }
     }
 }

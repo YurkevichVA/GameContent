@@ -1,5 +1,4 @@
-﻿using GameLauncher.Admin;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,31 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GameLauncher
+namespace GameLauncher.Admin
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AdminWindow : Window
     {
-        public MainWindow()
+        public AdminWindow()
         {
             InitializeComponent();
         }
 
-        private void PlayerWindow_Btn_Click(object sender, RoutedEventArgs e)
+        private void Players_LstVw_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
         }
 
-        private void AdminWindow_Btn_Click(object sender, RoutedEventArgs e)
+        private void Content_LstVw_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Hide();
-            new AdminWindow().ShowDialog();
-            Show();
+
+        }
+
+        private void Transactions_LstVw_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

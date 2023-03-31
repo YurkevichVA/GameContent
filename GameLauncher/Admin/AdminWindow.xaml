@@ -1,0 +1,155 @@
+﻿<Window x:Class="GameLauncher.Admin.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameLauncher.Admin"
+        mc:Ignorable="d"
+        Title="Admin" Height="550" Width="800">
+    <TabControl FontSize="15">
+        <TabItem Header="Players">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="30">
+                    <DatePicker 
+                    x:Name="RegDate_DtPckr" 
+                    Text="Registration Date" Margin="10 0 10 0" VerticalAlignment="Center"/>
+                    <CheckBox 
+                    x:Name="IncludeDeleted_ChkBx" 
+                    Content="Include deleted" Margin="10 0 10 0"  VerticalAlignment="Center"/>
+                </StackPanel>
+                <ListView 
+                    x:Name="Players_LstVw" MouseDoubleClick="Players_LstVw_MouseDoubleClick"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                    ScrollViewer.CanContentScroll="True" Grid.Row="1">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Header="Id"
+                                DisplayMemberBinding="{Binding Path=Id}"/>
+                            <GridViewColumn
+                                Header="Name"
+                                DisplayMemberBinding="{Binding Path=Name}"/>
+                            <GridViewColumn
+                                Header="Surname"
+                                DisplayMemberBinding="{Binding Path=Surname}"/>
+                            <GridViewColumn
+                                Header="Login"
+                                DisplayMemberBinding="{Binding Path=Login}"/>
+                            <GridViewColumn
+                                Header="Email"
+                                DisplayMemberBinding="{Binding Path=Email}"/>
+                            <GridViewColumn
+                                Header="Coins"
+                                DisplayMemberBinding="{Binding Path=CoinsCount}"/>
+                            <GridViewColumn
+                                Header="Registration Date"
+                                DisplayMemberBinding="{Binding Path=RegistrationDt}"/>
+                            <GridViewColumn
+                                Header="Deletion Date"
+                                DisplayMemberBinding="{Binding Path=DeleteDt}"/>
+                            
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Content">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="30">
+                    <ComboBox 
+                    x:Name="TypeSort_CmbBx" Text="Type"
+                    Margin="10 0 10 0" VerticalAlignment="Center"
+                    Width="100">
+                        <TextBlock Text="Character"/>
+                        <TextBlock Text="Item"/>
+                    </ComboBox>
+                </StackPanel>
+                <ListView 
+                    x:Name="Content_LstVw" MouseDoubleClick="Content_LstVw_MouseDoubleClick"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                    ScrollViewer.CanContentScroll="True" Grid.Row="1">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Header="Id"
+                                DisplayMemberBinding="{Binding Path=Id}"/>
+                            <GridViewColumn
+                                Header="Name"
+                                DisplayMemberBinding="{Binding Path=Name}"/>
+                            <GridViewColumn
+                                Header="Type"
+                                DisplayMemberBinding="{Binding Path=RegistrationDt}"/>
+                            <GridViewColumn
+                                Header="Cost(Real)"
+                                DisplayMemberBinding="{Binding Path=CostReal}"/>
+                            <GridViewColumn
+                                Header="Cost(Coins)"
+                                DisplayMemberBinding="{Binding Path=CostCoins}"/>
+                            <GridViewColumn
+                                Header="Link"
+                                DisplayMemberBinding="{Binding Path=Email}"/>
+                            <GridViewColumn
+                                Header="Folder"
+                                DisplayMemberBinding="{Binding Path=CoinsCount}"/>
+                            <GridViewColumn
+                                Header="Deletion Date"
+                                DisplayMemberBinding="{Binding Path=DeleteDt}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Transactions">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="30">
+                    <Button 
+                    x:Name="GenTransactions_Btn" Content="Generate"
+                    Margin="10 0 10 0" VerticalAlignment="Center"
+                    Width="100"/>
+                    <DatePicker 
+                    x:Name="TransactionDate_DtPckr"
+                    Margin="10 0 10 0" VerticalAlignment="Center"/>
+                    <ComboBox 
+                    x:Name="PayerSort_CmbBx"
+                    Margin="10 0 10 0" VerticalAlignment="Center"
+                    Width="100">
+
+                    </ComboBox>
+                </StackPanel>
+                <ListView 
+                    x:Name="Transactions_LstVw" MouseDoubleClick="Transactions_LstVw_MouseDoubleClick"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                    ScrollViewer.CanContentScroll="True" Grid.Row="1">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Header="Id"
+                                DisplayMemberBinding="{Binding Path=Id}"/>
+                            <GridViewColumn
+                                Header="Date"
+                                DisplayMemberBinding="{Binding Path=Date}"/>
+                            <GridViewColumn
+                                Header="Payer"
+                                DisplayMemberBinding="{Binding Path=Payer}"/>
+                            <GridViewColumn
+                                Header="Amount"
+                                DisplayMemberBinding="{Binding Path=Amount}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

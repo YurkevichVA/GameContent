@@ -21,6 +21,7 @@ namespace GameLauncher.Entities
 
         /// Navigation properties ///
         public List<Content> UnlockedContent { get; set; }
+        public List<Transaction> Transactions { get; set; }
 
     }
 }
