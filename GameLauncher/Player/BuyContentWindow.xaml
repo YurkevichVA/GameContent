@@ -1,0 +1,57 @@
+﻿<Window x:Class="GameLauncher.Player.BuyContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameLauncher.Player"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="Purchase" Height="250" Width="400">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Image 
+                x:Name="Avatar_Img"
+                Grid.Column="0"
+                Width="200" Height="200"
+                Source="..\Temp\temp_avatar.png"/>
+
+            <StackPanel
+                    Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="0" Grid.Column="1">
+
+                <TextBlock
+                    x:Name="Name_TxtBx"
+                    Text="Wereboar"
+                    FontSize="25" FontWeight="Bold" Grid.Row="0"/>
+
+
+                <GroupBox>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton
+                            x:Name="RealCost_RdBtn"
+                            Content="1$" Grid.Column="0"/>
+                        <RadioButton 
+                            x:Name="CoinsCost_RdBtn"
+                            Content="500 C" Grid.Column="1"/>
+                    </Grid>
+                </GroupBox>
+
+                <Button
+                    x:Name="Purchase_Btn" Click="Purchase_Btn_Click"
+                    Content="Purchase" Width="90" Height="25" Margin="10"/>
+                <Button
+                    x:Name="Cancel_Btn" Click="Cancel_Btn_Click"
+                    Content="Cancel" Width="90" Height="25"/>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>

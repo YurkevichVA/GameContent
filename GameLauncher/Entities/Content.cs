@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 
 namespace GameLauncher.Entities
 {
@@ -10,11 +8,16 @@ namespace GameLauncher.Entities
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public float CostReal { get; set; }
+        public double CostReal { get; set; }
         public int CostCoins { get; set; }
         public string InstallationLink { get; set; }
         public string InstallationFolder { get; set; }
-        public string Type { get; set; }
-        public DateTime DeleteDt { get; set; }
+        public ContentType Type { get; set; }
+        public DateTime? DeleteDt { get; set; }
+    }
+    public enum ContentType
+    {
+        Item,
+        Character
     }
 }

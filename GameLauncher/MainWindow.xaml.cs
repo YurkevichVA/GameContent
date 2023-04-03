@@ -22,6 +22,7 @@ namespace GameLauncher
     /// </summary>
     public partial class MainWindow : Window
     {
+        public EFContext Context { get; set; } = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -30,14 +31,14 @@ namespace GameLauncher
         private void PlayerWindow_Btn_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            new PlayerWindow().ShowDialog();
+            new PlayerWindow(Context).ShowDialog();
             Show();
         }
 
         private void AdminWindow_Btn_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            new AdminWindow().ShowDialog();
+            new AdminWindow(Context).ShowDialog();
             Show();
         }
     }

@@ -5,31 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameLauncher.Admin"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="Admin" Height="550" Width="800"
         ResizeMode="NoResize">
     <TabControl FontSize="15">
         <TabItem Header="Players">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="56*"/>
+                    <ColumnDefinition Width="341*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="30">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="30" Grid.ColumnSpan="2">
+                    <Button
+                        x:Name="GeneratePlayers_Btn" Click="GeneratePlayers_Btn_Click"
+                        Content="Generate" Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100"/>
                     <DatePicker 
-                    x:Name="RegDate_DtPckr" 
-                    Text="Registration Date" Margin="10 0 10 0" VerticalAlignment="Center"/>
+                        x:Name="RegDate_DtPckr" 
+                        Text="Registration Date" Margin="10 0 10 0" VerticalAlignment="Center"/>
                     <CheckBox 
-                    x:Name="IncludeDeleted_ChkBx" 
-                    Content="Include deleted" Margin="10 0 10 0"  VerticalAlignment="Center"/>
+                        x:Name="IncludeDeleted_ChkBx" 
+                        Checked="IncludeDeleted_ChkBx_Checked" Unchecked="IncludeDeleted_ChkBx_Unchecked"
+                        Content="Include deleted" Margin="10 0 10 0"  VerticalAlignment="Center"/>
                 </StackPanel>
                 <ListView 
                     x:Name="Players_LstVw" MouseDoubleClick="Players_LstVw_MouseDoubleClick"
                     ScrollViewer.VerticalScrollBarVisibility="Visible" 
-                    ScrollViewer.CanContentScroll="True" Grid.Row="1">
+                    ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="2">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn
-                                Header="Id"
+                                Header="Id" Width="50"
                                 DisplayMemberBinding="{Binding Path=Id}"/>
                             <GridViewColumn
                                 Header="Name"
@@ -52,7 +62,7 @@
                             <GridViewColumn
                                 Header="Deletion Date"
                                 DisplayMemberBinding="{Binding Path=DeleteDt}"/>
-                            
+
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -65,12 +75,17 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="30">
+                    <Button
+                        x:Name="AddContent_Btn" Click="AddContent_Btn_Click"
+                        Content="Add" Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100"/>
                     <ComboBox 
                     x:Name="TypeSort_CmbBx" Text="Type"
                     Margin="10 0 10 0" VerticalAlignment="Center"
                     Width="100">
-                        <TextBlock Text="Character"/>
                         <TextBlock Text="Item"/>
+                        <TextBlock Text="Character"/>
+                        <TextBlock Text="Any"/>
                     </ComboBox>
                 </StackPanel>
                 <ListView 
@@ -80,14 +95,14 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn
-                                Header="Id"
+                                Header="Id" Width="50"
                                 DisplayMemberBinding="{Binding Path=Id}"/>
                             <GridViewColumn
                                 Header="Name"
                                 DisplayMemberBinding="{Binding Path=Name}"/>
                             <GridViewColumn
                                 Header="Type"
-                                DisplayMemberBinding="{Binding Path=RegistrationDt}"/>
+                                DisplayMemberBinding="{Binding Path=Type}"/>
                             <GridViewColumn
                                 Header="Cost(Real)"
                                 DisplayMemberBinding="{Binding Path=CostReal}"/>
@@ -95,11 +110,11 @@
                                 Header="Cost(Coins)"
                                 DisplayMemberBinding="{Binding Path=CostCoins}"/>
                             <GridViewColumn
-                                Header="Link"
-                                DisplayMemberBinding="{Binding Path=Email}"/>
+                                Header="Link" Width="100"
+                                DisplayMemberBinding="{Binding Path=InstallationLink}"/>
                             <GridViewColumn
-                                Header="Folder"
-                                DisplayMemberBinding="{Binding Path=CoinsCount}"/>
+                                Header="Folder" Width="100"
+                                DisplayMemberBinding="{Binding Path=InstallationFolder}"/>
                             <GridViewColumn
                                 Header="Deletion Date"
                                 DisplayMemberBinding="{Binding Path=DeleteDt}"/>
@@ -136,7 +151,7 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn
-                                Header="Id"
+                                Header="Id" Width="50"
                                 DisplayMemberBinding="{Binding Path=Id}"/>
                             <GridViewColumn
                                 Header="Date"

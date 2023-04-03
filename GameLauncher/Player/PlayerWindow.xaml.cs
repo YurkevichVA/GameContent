@@ -9,9 +9,11 @@ namespace GameLauncher.Player
     /// </summary>
     public partial class PlayerWindow : Window
     {
-        public PlayerWindow()
+        public EFContext Context { get; set; }
+        public PlayerWindow(EFContext context)
         {
             InitializeComponent();
+            Context = context;
             Main_Frm.Navigate(new LogInPage(this));
         }
         public void ChangePage(Page page)
