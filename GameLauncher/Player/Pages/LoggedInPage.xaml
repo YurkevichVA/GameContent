@@ -188,7 +188,7 @@
                                 <Image 
                                     Width="200" Height="200"
                                     Grid.Column="0"
-                                    Source="{Binding InstallationFolder}"/>
+                                    Source="{Binding getInstallationFolder}"/>
 
                                 <Grid Grid.Column="1" HorizontalAlignment="Right">
                                     <Grid.RowDefinitions>

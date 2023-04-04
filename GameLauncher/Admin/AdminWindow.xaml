@@ -24,16 +24,28 @@
                         x:Name="GeneratePlayers_Btn" Click="GeneratePlayers_Btn_Click"
                         Content="Generate" Margin="10 0 10 0" VerticalAlignment="Center"
                         Width="100"/>
+                    <Button
+                        x:Name="ResetFiltersPlayers_Btn" Click="ResetFiltersPlayers_Btn_Click"
+                        Content="Reset" Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100"/>
                     <DatePicker 
-                        x:Name="RegDate_DtPckr" 
+                        x:Name="RegDate_DtPckr" SelectedDateChanged="RegDate_DtPckr_SelectedDateChanged"
                         Text="Registration Date" Margin="10 0 10 0" VerticalAlignment="Center"/>
-                    <CheckBox 
-                        x:Name="IncludeDeleted_ChkBx" 
-                        Checked="IncludeDeleted_ChkBx_Checked" Unchecked="IncludeDeleted_ChkBx_Unchecked"
-                        Content="Include deleted" Margin="10 0 10 0"  VerticalAlignment="Center"/>
-                </StackPanel>
+                    <ComboBox
+                        x:Name="Deleted_CmbBx" SelectionChanged="Deleted_CmbBx_SelectionChanged"
+                        Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100">
+                        <TextBlock>All</TextBlock>
+                        <TextBlock>Non deleted</TextBlock>
+                        <TextBlock>Only deleted</TextBlock>
+                    </ComboBox>
+                    <TextBox
+                        x:Name="LoginSearch_TxtBx" TextChanged="LoginSearch_TxtBx_TextChanged"
+                        Width="120" Height="30"
+                        Margin="10 0 10 0" VerticalAlignment="Center"/>
+                </StackPanel> 
                 <ListView 
-                    x:Name="Players_LstVw" MouseDoubleClick="Players_LstVw_MouseDoubleClick"
+                    x:Name="Players_LstVw"
                     ScrollViewer.VerticalScrollBarVisibility="Visible" 
                     ScrollViewer.CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="2">
                     <ListView.View>
@@ -79,13 +91,29 @@
                         x:Name="AddContent_Btn" Click="AddContent_Btn_Click"
                         Content="Add" Margin="10 0 10 0" VerticalAlignment="Center"
                         Width="100"/>
+                    <Button
+                        x:Name="ResetContentFilters_Btn" Click="ResetContentFilters_Btn_Click"
+                        Content="Reset" Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100"/>
                     <ComboBox 
-                    x:Name="TypeSort_CmbBx" Text="Type"
-                    Margin="10 0 10 0" VerticalAlignment="Center"
-                    Width="100">
+                        x:Name="TypeSort_CmbBx" SelectionChanged="TypeSort_CmbBx_SelectionChanged"
+                        Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100">
+                        <TextBlock Text="Any"/>
                         <TextBlock Text="Item"/>
                         <TextBlock Text="Character"/>
-                        <TextBlock Text="Any"/>
+                    </ComboBox>
+                    <TextBox
+                        x:Name="NameContentSearch_TxtBx" TextChanged="NameContentSearch_TxtBx_TextChanged"
+                        Width="120" Height="30"
+                        Margin="10 0 10 0" VerticalAlignment="Center"/>
+                    <ComboBox
+                        x:Name="DeletedContent_CmbBx" SelectionChanged="DeletedContent_CmbBx_SelectionChanged"
+                        Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100">
+                        <TextBlock>All</TextBlock>
+                        <TextBlock>Non deleted</TextBlock>
+                        <TextBlock>Only deleted</TextBlock>
                     </ComboBox>
                 </StackPanel>
                 <ListView 
@@ -131,21 +159,23 @@
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="30">
                     <Button 
-                    x:Name="GenTransactions_Btn" Content="Generate"
-                    Margin="10 0 10 0" VerticalAlignment="Center"
-                    Width="100"/>
+                        x:Name="ResetFiltersTransactions_Btn" Content="Reset"
+                        Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100" Click="ResetFiltersTransactions_Btn_Click"/>
                     <DatePicker 
-                    x:Name="TransactionDate_DtPckr"
-                    Margin="10 0 10 0" VerticalAlignment="Center"/>
+                        x:Name="TransactionDate_DtPckr"
+                        Margin="10 0 10 0" VerticalAlignment="Center"
+                        SelectedDateChanged="TransactionDate_DtPckr_SelectedDateChanged"/>
                     <ComboBox 
-                    x:Name="PayerSort_CmbBx"
-                    Margin="10 0 10 0" VerticalAlignment="Center"
-                    Width="100">
-
+                        x:Name="TransactionPlayer_CmbBx"
+                        DisplayMemberPath="Login"
+                        Margin="10 0 10 0" VerticalAlignment="Center"
+                        Width="100"
+                        SelectionChanged="TransactionPlayer_CmbBx_SelectionChanged">
                     </ComboBox>
                 </StackPanel>
                 <ListView 
-                    x:Name="Transactions_LstVw" MouseDoubleClick="Transactions_LstVw_MouseDoubleClick"
+                    x:Name="Transactions_LstVw"
                     ScrollViewer.VerticalScrollBarVisibility="Visible" 
                     ScrollViewer.CanContentScroll="True" Grid.Row="1">
                     <ListView.View>
@@ -158,10 +188,7 @@
                                 DisplayMemberBinding="{Binding Path=Date}"/>
                             <GridViewColumn
                                 Header="Payer"
-                                DisplayMemberBinding="{Binding Path=Payer}"/>
-                            <GridViewColumn
-                                Header="Amount"
-                                DisplayMemberBinding="{Binding Path=Amount}"/>
+                                DisplayMemberBinding="{Binding Path=Payer.Login}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

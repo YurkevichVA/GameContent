@@ -1,22 +1,13 @@
-﻿using GameLauncher.Admin;
-using GameLauncher.Entities;
+﻿using GameLauncher.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Text;
+using System.Net;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GameLauncher.Player.Pages
 {
@@ -27,17 +18,39 @@ namespace GameLauncher.Player.Pages
     {
         private Entities.Player _player;
         private PlayerWindow _parent;
+
+        private string rootPath;
+        private string contentPath;
+        private string avatarPath;
         public LoggedInPage(Entities.Player player, PlayerWindow parent)
         {
             InitializeComponent();
+
             _player = player;
             _parent = parent;
+
             DataContext = _parent.Context;
+
             _parent.Context.Contents.Load();
+
+            rootPath = Directory.GetCurrentDirectory();
+            contentPath = Path.Combine(rootPath, "Contents");
+            avatarPath = Path.Combine(rootPath, "Avatars");
+
+            if(!Directory.Exists(contentPath))
+                Directory.CreateDirectory(contentPath);
+
+            if(!Directory.Exists(avatarPath))
+                Directory.CreateDirectory(avatarPath);
+
+            MessageBox.Show(contentPath);
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        #region Initial
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            DownloadContent();
+
             SetupProfile();
             SetupInventory();
             SetupShop();
@@ -56,17 +69,39 @@ namespace GameLauncher.Player.Pages
 
         private void SetupInventory()
         {
-            Shop_LstVw.ItemsSource = _parent.Context.Contents.Local.ToObservableCollection();
+            if(_player.UnlockedContent is not null)
+                Inventory_LstVw.ItemsSource = _player.UnlockedContent;
         }
 
         private void SetupShop()
         {
             Shop_LstVw.ItemsSource = _parent.Context.Contents.Local.ToObservableCollection();
+
         }
 
+        private async void DownloadContent()
+        {
+            try
+            {
+                WebClient webClient = new();
+                foreach (var content in _parent.Context.Contents)
+                {
+                    string path = Path.Combine(contentPath, content.InstallationFolder);
+                    if (!File.Exists(path))
+                        webClient.DownloadFile(new Uri(content.InstallationLink), path);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Profile
         private void Upload_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("You can't do it yet, sorry :(");
         }
 
         private void ChangePass_Btn_Click(object sender, RoutedEventArgs e)
@@ -219,7 +254,9 @@ namespace GameLauncher.Player.Pages
             ApplyChanges_Btn.IsEnabled = false;
             ResetChanges_Btn.IsEnabled = false;
         }
+        #endregion
 
+        #region Shop
         private void Shop_LstVw_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListView item)
@@ -255,5 +292,6 @@ namespace GameLauncher.Player.Pages
                 }
             }
         }
+        #endregion
     }
 }

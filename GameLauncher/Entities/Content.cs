@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
+using System.IO;
+using System.Reflection.Metadata;
 
 namespace GameLauncher.Entities
 {
@@ -14,6 +16,14 @@ namespace GameLauncher.Entities
         public string InstallationFolder { get; set; }
         public ContentType Type { get; set; }
         public DateTime? DeleteDt { get; set; }
+
+        public string getInstallationFolder
+        {
+            get
+            {
+                return Path.Combine(Directory.GetCurrentDirectory(), "Contents", this.InstallationFolder);
+            }
+        }
     }
     public enum ContentType
     {
